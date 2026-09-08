@@ -1,0 +1,322 @@
+
+
+
+
+:root {
+    --ep-primary:  #2C1810;
+    --ep-gold:     #D4AF37;
+    --ep-rose:     #C4847A;
+    --ep-ivory:    #FAF6F0;
+    --ep-muted:    #8B6F5E;
+    --ep-border:   #E8DDD5;
+    --sidebar-w:   260px;
+    --topbar-h:    56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overscroll-behavior: none; }
+body { margin:0; font-family:'Poppins',sans-serif; font-size:.875rem; background:#F5F5F7; color:#333; overscroll-behavior: none; }
+
+
+.topbar {
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    height:var(--topbar-h); background:linear-gradient(135deg,var(--ep-primary),#4A2520);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 1.5rem; box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.topbar-brand { color:var(--ep-gold); font-size:.95rem; font-weight:600; letter-spacing:.5px; }
+.topbar-role { color:#C4A882; font-size:.8rem; font-weight:400; }
+.topbar-actions { display:flex; align-items:center; gap:.5rem; }
+.topbar-user { color:#E8DDD5; font-size:.82rem; margin:0 .5rem; }
+.circle-btn {
+    width:34px; height:34px; border-radius:50%; border:1.5px solid rgba(255,255,255,.2);
+    background:transparent; color:#D4AF37; font-size:.85rem;
+    display:inline-flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:.15s; text-decoration:none;
+}
+.circle-btn:hover { background:rgba(212,175,55,.15); color:#D4AF37; }
+
+
+.sidebar {
+    position:fixed; left:0; top:var(--topbar-h); bottom:0; z-index:900;
+    width:var(--sidebar-w); background:#fff; border-right:1px solid var(--ep-border);
+    overflow-y:auto; display:flex; flex-direction:column;
+    box-shadow:2px 0 8px rgba(44,24,16,.05);
+}
+.sidebar-link {
+    display:flex; align-items:center; gap:.6rem;
+    padding:.75rem 1.25rem; color:#555; text-decoration:none;
+    font-size:.85rem; font-weight:500; border-bottom:1px solid #F5F5F7;
+    transition:.15s;
+}
+.sidebar-link:hover { background:var(--ep-ivory); color:var(--ep-primary); }
+.sidebar-link.active { background:linear-gradient(90deg,var(--ep-ivory),#fff); color:var(--ep-primary); font-weight:600; border-left:3px solid var(--ep-gold); }
+.sidebar-link i { width:20px; color:var(--ep-gold); }
+
+
+.submenu-toggle {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:.75rem 1.25rem; color:#555; text-decoration:none;
+    font-size:.85rem; font-weight:500; border-bottom:1px solid #F5F5F7;
+    cursor:pointer; transition:.15s; background:#fff;
+}
+.submenu-toggle:hover { background:var(--ep-ivory); color:var(--ep-primary); }
+.submenu-toggle.active { color:var(--ep-primary); font-weight:600; }
+.submenu-toggle span { display:flex; align-items:center; gap:.6rem; }
+.submenu-toggle span i { width:20px; color:var(--ep-gold); }
+.submenu-toggle .fa-chevron-down { transition:transform .2s; font-size:.7rem; color:var(--ep-muted); }
+.submenu-toggle.active .fa-chevron-down { transform:rotate(180deg); }
+
+.submenu {
+    background:var(--ep-ivory); max-height:0; overflow:hidden; transition:max-height .3s ease;
+    border-bottom:1px solid var(--ep-border);
+}
+.submenu.show { max-height:500px; }
+.submenu a {
+    display:block; padding:.55rem 1.25rem .55rem 3rem;
+    color:#666; text-decoration:none; font-size:.82rem; transition:.15s;
+}
+.submenu a:hover, .submenu a.active { color:var(--ep-primary); font-weight:600; }
+
+.sidebar-footer { margin-top:auto; padding:1rem 1.25rem; font-size:.72rem; color:var(--ep-muted); border-top:1px solid var(--ep-border); }
+
+
+.admin-content {
+    margin-left:var(--sidebar-w); margin-top:var(--topbar-h);
+    padding:1.75rem 2rem; min-height:calc(100vh - var(--topbar-h));
+}
+
+
+.admin-page-header {
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;
+}
+.admin-page-header h3 { font-family:'Cormorant Garamond',serif; color:var(--ep-primary); margin:0; font-size:1.6rem; }
+
+
+.admin-card { background:#fff; border:1px solid var(--ep-border); border-radius:14px; overflow:hidden; }
+.admin-card-header {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.875rem 1.25rem; background:var(--ep-ivory);
+    border-bottom:1px solid var(--ep-border);
+}
+.admin-card-header h5, .admin-card-header h6 { margin:0; font-family:'Cormorant Garamond',serif; color:var(--ep-primary); }
+.admin-card-body { padding:1.25rem; }
+
+
+.kpi-card {
+    background:#fff; border:1px solid var(--ep-border); border-radius:14px;
+    padding:1.25rem; text-align:center; transition:.2s;
+}
+.kpi-card:hover { box-shadow:0 4px 16px rgba(44,24,16,.08); }
+.kpi-icon {
+    width:44px; height:44px; border-radius:12px;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:1.2rem; margin-bottom:.6rem;
+}
+.kpi-valor { font-size:1.6rem; font-weight:700; color:var(--ep-primary); line-height:1.1; }
+.kpi-label { font-size:.72rem; color:var(--ep-muted); text-transform:uppercase; letter-spacing:1px; margin-top:.2rem; }
+
+
+.quick-action {
+    display:flex; align-items:center; gap:.75rem;
+    padding:.75rem 1.25rem; color:#444; text-decoration:none;
+    border-bottom:1px solid var(--ep-border); font-size:.875rem; transition:.15s;
+}
+.quick-action:last-child { border-bottom:none; }
+.quick-action:hover { background:var(--ep-ivory); color:var(--ep-primary); }
+.quick-action i { width:20px; color:var(--ep-gold); }
+
+
+.admin-guide-banner {
+    background:linear-gradient(135deg,var(--ep-primary),#4A2520);
+    border-radius:14px; padding:1.25rem 1.5rem; color:#FAF6F0;
+}
+.familia-guide-item { font-size:.8rem; color:#C4A882; padding:.25rem 0; }
+.familia-guide-item strong { color:var(--ep-gold); }
+.familia-guide-desc { color:#E8DDD5; }
+.admin-guide-banner .text-muted,
+.topbar .text-muted {
+    color:#E8DDD5 !important;
+}
+
+
+.familia-icon-preview {
+    width:40px; height:40px; background:rgba(212,175,55,.12);
+    border-radius:10px; display:flex; align-items:center; justify-content:center;
+    color:var(--ep-gold); font-size:1.1rem;
+}
+
+
+.role-badge {
+    display:inline-block; padding:.2rem .65rem; border-radius:99px;
+    font-size:.72rem; font-weight:600; letter-spacing:.5px; text-transform:uppercase;
+}
+.role-admin      { background:#2C1810; color:#D4AF37; }
+.role-cliente    { background:#E8DDD5; color:#3D2419; }
+
+
+.table thead th {
+    background:var(--ep-ivory); font-size:.72rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:.6px; color:var(--ep-muted);
+    border-bottom:1px solid var(--ep-border); padding:.85rem 1rem;
+}
+.table td { vertical-align:middle; border-color:#f2eee9; padding:.85rem 1rem; }
+.table-hover tbody tr:hover { background:var(--ep-ivory); }
+.table-hover tbody tr:hover .stock-chip-add { opacity:1; }
+
+
+/* --- Fragancias: fila de producto --- */
+.frag-thumb {
+    width:46px; height:46px; object-fit:cover; border-radius:10px;
+    background:var(--ep-ivory); border:1px solid var(--ep-border); flex-shrink:0;
+}
+.frag-nombre { font-weight:600; color:var(--ep-primary); font-size:.85rem; line-height:1.25; }
+.frag-casa { color:var(--ep-muted); font-size:.75rem; }
+
+.familia-badge {
+    display:inline-block; padding:.28rem .7rem; border-radius:99px;
+    font-size:.72rem; font-weight:600; white-space:nowrap;
+}
+
+.status-pill {
+    display:inline-flex; align-items:center; gap:.35rem;
+    padding:.28rem .7rem; border-radius:99px; font-size:.72rem; font-weight:600;
+}
+.status-pill::before { content:''; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.status-pill-activo   { background:rgba(46,125,50,.1);  color:#2E7D32; }
+.status-pill-inactivo { background:rgba(139,111,94,.12); color:var(--ep-muted); }
+
+/* Stock: chips compactos en línea en vez de filas apiladas */
+.stock-chips { display:flex; flex-wrap:wrap; gap:.4rem; max-width:230px; }
+.stock-chip {
+    display:inline-flex; align-items:center; gap:.4rem;
+    padding:.22rem .3rem .22rem .6rem; border-radius:8px;
+    font-size:.74rem; font-weight:600; line-height:1.4;
+    background:#F2F6F2; color:#3C6E3C; border:1px solid rgba(60,110,60,.12);
+}
+.stock-chip-low  { background:#FDF3E3; color:#9A6A12; border-color:rgba(154,106,18,.18); }
+.stock-chip-out  { background:#FBEAEA; color:#B23A3A; border-color:rgba(178,58,58,.18); }
+.stock-chip .stock-ml { opacity:.75; font-weight:500; }
+.stock-chip-add {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:17px; height:17px; border-radius:50%; border:none;
+    background:rgba(0,0,0,.08); color:inherit; font-size:.65rem;
+    opacity:.55; transition:opacity .15s, background .15s; cursor:pointer;
+}
+.stock-chip-add:hover { opacity:1; background:rgba(0,0,0,.16); }
+.stock-empty { color:var(--ep-muted); font-size:.78rem; font-style:italic; }
+
+/* Acciones: botones circulares suaves, menos ruido visual */
+.row-actions { display:flex; gap:.35rem; }
+.action-btn {
+    width:32px; height:32px; border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center;
+    border:1px solid var(--ep-border); background:#fff; color:var(--ep-muted);
+    font-size:.78rem; transition:.15s; text-decoration:none; cursor:pointer;
+}
+.action-btn:hover { border-color:currentColor; }
+.action-btn-view:hover { color:var(--ep-primary); }
+.action-btn-edit:hover { color:#8A6D2F; border-color:#8A6D2F; background:rgba(212,175,55,.08); }
+.action-btn-delete:hover { color:#B23A3A; border-color:#B23A3A; background:rgba(178,58,58,.06); }
+
+
+.form-label.fw-600 { color:var(--ep-primary); }
+.form-control:focus, .form-select:focus { border-color:var(--ep-gold); box-shadow:0 0 0 .2rem rgba(212,175,55,.2); }
+.form-check-input:checked { background-color:var(--ep-primary); border-color:var(--ep-primary); }
+.form-check-input[type="checkbox"]:checked { background-color:var(--ep-gold); border-color:var(--ep-gold); }
+
+
+.btn-gold { background:linear-gradient(135deg,#D4AF37,#C49A28); color:var(--ep-primary); font-weight:600; border:none; }
+.btn-gold:hover { opacity:.9; color:var(--ep-primary); }
+.btn-xs { padding:.15rem .4rem; font-size:.75rem; }
+
+
+.breadcrumb-item a { color:var(--ep-primary); text-decoration:none; }
+.breadcrumb-item.active { color:var(--ep-muted); }
+.breadcrumb-item + .breadcrumb-item::before { color:var(--ep-muted); }
+
+
+.pagination .page-link { color:var(--ep-primary); border-color:var(--ep-border); }
+.pagination .page-item.active .page-link {
+    background:var(--ep-gold);
+    border-color:var(--ep-gold);
+    color:var(--ep-primary);
+    font-weight:700;
+}
+
+
+@media (max-width: 991px) {
+    .sidebar { transform:translateX(-100%); transition:transform .3s; }
+    .sidebar.open { transform:translateX(0); }
+    .admin-content { margin-left:0; }
+}
+
+
+.notif-badge {
+    position: absolute; top: -4px; right: -4px;
+    background: #dc3545; color: #fff; border-radius: 999px;
+    font-size: .65rem; font-weight: 700; line-height: 1;
+    padding: .25rem .4rem; min-width: 1.1rem; text-align: center;
+}
+.notif-dropdown { width: 340px; max-width: 90vw; border: none; box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+.notif-dropdown-header { display:flex; justify-content:space-between; align-items:center; padding:.75rem 1rem; border-bottom:1px solid #eee; }
+.notif-dropdown-body { max-height: 340px; overflow-y: auto; }
+.notif-item { display:flex; gap:.6rem; padding:.65rem 1rem; text-decoration:none; color:inherit; border-bottom:1px solid #f4f4f4; }
+.notif-item:hover { background:#faf8f5; }
+.notif-item.no-leida { background:#fff8ec; }
+.notif-item i { margin-top:.2rem; }
+.notif-titulo { font-weight:600; font-size:.85rem; }
+.notif-mensaje { font-size:.8rem; color:#555; }
+.notif-fecha { font-size:.72rem; color:#999; }
+.notif-vacio { padding:1.5rem 1rem; text-align:center; color:#999; font-size:.85rem; }
+.notif-dropdown-footer { padding:.6rem 1rem; text-align:center; border-top:1px solid #eee; }
+.notif-dropdown-footer a { font-size:.85rem; }
+
+/*
+ * Tabla apilada en mobile, reutilizable en cualquier listado admin.
+ * Uso: agrega class="table-mobile-stack" a la <table>, y data-label="Columna"
+ * a cada <td> (excepto la primera celda "identificadora", que no la necesita).
+ * Origen: nació en fragancias/index.blade.php, movido aquí para no repetir
+ * el mismo <style> en cada vista de listado (familias, pedidos, usuarios...).
+ */
+@media (max-width: 767px) {
+    .table-mobile-stack thead {
+        display: none;
+    }
+
+    .table-mobile-stack,
+    .table-mobile-stack tbody,
+    .table-mobile-stack tr,
+    .table-mobile-stack td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-mobile-stack tbody tr {
+        padding: .75rem 0;
+        border-bottom: 1px solid #f1ecea;
+    }
+
+    .table-mobile-stack tbody td {
+        padding: .4rem 1rem;
+        border: none;
+    }
+
+    .table-mobile-stack tbody td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: .68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: #a08f85;
+        margin-bottom: .2rem;
+    }
+
+    /* Celdas de "acciones" quedan mejor en fila, no apiladas verticalmente */
+    .table-mobile-stack tbody td[data-label="Acciones"] > div {
+        display: flex;
+        gap: .4rem;
+    }
+}

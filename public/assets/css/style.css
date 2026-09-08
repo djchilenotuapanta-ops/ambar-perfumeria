@@ -1,0 +1,388 @@
+
+
+
+
+
+
+:root {
+    --ep-primary:   #2C1810;
+    --ep-secondary: #4A2520;
+    --ep-gold:      #D4AF37;
+    --ep-rose:      #C4847A;
+    --ep-ivory:     #FAF6F0;
+    --ep-cream:     #F5EDE3;
+    --ep-dark:      #1a0a08;
+    --ep-text:      #3D2419;
+    --ep-muted:     #8B6F5E;
+    --ep-border:    #E8DDD5;
+
+    /* Variantes oscurecidas de gold/rose para usar como TEXTO sobre fondos claros
+       (blanco/ivory/cream). --ep-gold y --ep-rose se conservan tal cual para
+       fondos oscuros, bordes, iconos grandes y acentos decorativos, donde el
+       contraste original ya cumple WCAG AA. */
+    --ep-gold-a11y: #8A6A17;  /* gold vs #fff = 5.05:1, vs ivory = 4.69:1 */
+    --ep-rose-a11y: #9C5347;  /* rose vs #fff = 5.61:1, vs ivory = 4.68:1 */
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overscroll-behavior: none; }
+body { font-family: 'Poppins', sans-serif; color: var(--ep-text); background: #fff; overscroll-behavior: none; }
+h1,h2,h3,h4,h5 { font-family: 'Cormorant Garamond', serif; }
+.bg-ivory { background: var(--ep-ivory); }
+.fw-600 { font-weight: 600; }
+.text-gold { color: var(--ep-gold-a11y) !important; }
+.eyebrow { font-size:.72rem; letter-spacing:5px; text-transform:uppercase; color:var(--ep-gold-a11y); margin-bottom:.4rem; }
+.section-title { font-size:2rem; color:var(--ep-primary); line-height:1.2; }
+
+
+.btn-gold {
+    background: linear-gradient(135deg, var(--ep-gold), #C49A28);
+    color: var(--ep-primary); font-weight:600; border:none;
+    padding:.625rem 1.5rem; border-radius:8px; transition: all .2s;
+}
+.btn-gold:hover { opacity:.9; color:var(--ep-primary); transform:translateY(-1px); }
+.btn-dark-perfume {
+    background: var(--ep-primary); color: var(--ep-ivory);
+    border:none; padding:.5rem 1.25rem; border-radius:8px;
+    font-size:.875rem; font-weight:500; transition: all .2s;
+}
+.btn-dark-perfume:hover { background: var(--ep-secondary); color: var(--ep-ivory); transform:translateY(-1px); }
+.btn-search { background:var(--ep-primary); color:#fff; border:none; border-radius:0 8px 8px 0; padding:.375rem .75rem; }
+
+
+.header-top {
+    background: var(--ep-primary);
+    color: var(--ep-gold);
+    font-size: .78rem;
+    padding: .4rem 2rem;
+    letter-spacing:.5px;
+}
+.header-top a { color:var(--ep-gold); font-size:1rem; margin-right:.6rem; text-decoration:none; transition:.2s; }
+.header-top a:hover { opacity:.7; }
+.header-top-offer { font-size:.75rem; color:#C4A882; letter-spacing:.5px; }
+.btn-circle {
+    width:36px; height:36px; padding:0; border-radius:50%;
+    display:inline-flex; align-items:center; justify-content:center;
+    border:1.5px solid rgba(255,255,255,.25); background:transparent;
+    color:#D4AF37; font-size:.85rem; position:relative;
+}
+.btn-circle:hover { background: rgba(212,175,55,.15); color:#D4AF37; }
+.badge-carrito {
+    position:absolute; top:-4px; right:-4px;
+    background:var(--ep-rose-a11y); color:#fff; font-size:.6rem;
+    width:16px; height:16px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+
+
+.navbar {
+    background: #fff; border-bottom:1px solid var(--ep-border);
+    padding:.75rem 0; box-shadow: 0 2px 12px rgba(44,24,16,.06);
+}
+.navbar-brand { text-decoration:none; line-height:1; }
+.brand-main { display:block; font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--ep-primary); letter-spacing:3px; }
+.brand-sub  { display:block; font-family:'Poppins',sans-serif; font-size:.6rem; color:var(--ep-muted); letter-spacing:6px; text-transform:uppercase; }
+.nav-link { color:var(--ep-text) !important; font-size:.875rem; font-weight:500; padding:.4rem .75rem !important; border-radius:6px; transition:.2s; }
+.nav-link:hover, .nav-link.active { color:var(--ep-primary) !important; background: var(--ep-cream); }
+.nav-link-gold { color:var(--ep-gold-a11y) !important; font-weight:600; }
+.nav-link-gold:hover { background:rgba(212,175,55,.1) !important; }
+.search-input { border:1.5px solid var(--ep-border); border-radius:8px 0 0 8px; font-size:.85rem; width:180px; }
+.search-input:focus { border-color:var(--ep-gold-a11y); box-shadow:none; }
+.dropdown-menu { border:1px solid var(--ep-border); border-radius:12px; box-shadow:0 8px 30px rgba(44,24,16,.1); }
+.dropdown-item:hover { background:var(--ep-cream); }
+
+
+.hero {
+    position:relative; height:88vh; min-height:540px;
+    background: linear-gradient(135deg, #1a0a08 0%, #2C1810 40%, #4A2520 100%);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.hero-overlay {
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(212,175,55,.08) 0%, transparent 60%);
+}
+.hero-content { position:relative; z-index:2; padding:2rem; }
+.hero-eyebrow { font-size:.7rem; letter-spacing:6px; color:var(--ep-gold); text-transform:uppercase; margin-bottom:1rem; }
+.hero-title {
+    font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem);
+    color:#FAF6F0; line-height:1.1; margin-bottom:1.25rem;
+}
+.hero-subtitle { font-size:1rem; color:#C4A882; max-width:480px; margin:0 auto 2rem; line-height:1.7; }
+
+
+.familia-card {
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:1.5rem 1rem; background:var(--ep-ivory); border:1.5px solid var(--ep-border);
+    border-radius:16px; transition:all .25s; cursor:pointer;
+}
+.familia-card:hover { border-color:var(--ep-gold); background:var(--ep-cream); transform:translateY(-3px); box-shadow:0 8px 24px rgba(44,24,16,.1); }
+.familia-icon { font-size:1.8rem; color:var(--ep-gold-a11y); margin-bottom:.6rem; }
+.familia-nombre { font-size:.875rem; font-weight:600; color:var(--ep-primary); text-align:center; }
+.familia-count { font-size:.72rem; color:var(--ep-muted); margin-top:.2rem; }
+
+
+.fragancia-card { background:#fff; border:1px solid var(--ep-border); border-radius:16px; overflow:hidden; transition:all .25s; }
+.fragancia-card:hover { box-shadow:0 8px 32px rgba(44,24,16,.12); transform:translateY(-3px); }
+.fragancia-card-img-link { display:block; position:relative; overflow:hidden; }
+.fragancia-card-img { width:100%; height:220px; object-fit:contain; object-position:center center; transition:transform .4s; background:var(--ep-cream); }
+.fragancia-card:hover .fragancia-card-img { transform:scale(1.04); }
+.fragancia-card-img-placeholder {
+    width:100%; height:220px;
+    background:linear-gradient(135deg,var(--ep-ivory),var(--ep-cream));
+    display:flex; align-items:center; justify-content:center;
+}
+.fragancia-badge {
+    position:absolute; top:.75rem; left:.75rem;
+    background:var(--ep-primary); color:var(--ep-gold);
+    font-size:.65rem; font-weight:700; letter-spacing:1.5px;
+    padding:.25rem .7rem; border-radius:99px;
+}
+.badge-oferta { background:var(--ep-rose-a11y); color:#fff; }
+.fragancia-card-body { padding:1rem; }
+.fragancia-card-casa { font-size:.72rem; text-transform:uppercase; letter-spacing:2px; color:var(--ep-muted); margin-bottom:.25rem; }
+.fragancia-card-nombre a { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--ep-primary); text-decoration:none; font-weight:600; }
+.fragancia-card-nombre a:hover { color:var(--ep-gold-a11y); }
+.fragancia-card-meta { display:flex; gap:.5rem; flex-wrap:wrap; margin:.4rem 0; }
+.fragancia-card-meta span { font-size:.7rem; background:var(--ep-cream); color:var(--ep-muted); padding:.15rem .5rem; border-radius:99px; }
+.precio-final { font-size:1.1rem; font-weight:700; color:var(--ep-primary); }
+.precio-original { font-size:.85rem; color:var(--ep-muted); text-decoration:line-through; }
+
+
+.fragancia-detail-img-wrap { background:var(--ep-ivory); border-radius:20px; overflow:hidden; aspect-ratio:1; display:flex; align-items:center; justify-content:center; }
+.fragancia-detail-img { width:100%; height:100%; object-fit:contain; object-position:center center; }
+.fragancia-detail-img-placeholder { width:100%; height:400px; display:flex; align-items:center; justify-content:center; background:var(--ep-ivory); border-radius:20px; }
+.thumb-img { width:70px; height:70px; object-fit:cover; border-radius:10px; border:2px solid var(--ep-border); cursor:pointer; transition:.2s; }
+.thumb-img:hover { border-color:var(--ep-gold); }
+.fragancia-detail-casa { font-size:.72rem; text-transform:uppercase; letter-spacing:3px; color:var(--ep-muted); margin-bottom:.4rem; }
+.fragancia-detail-nombre { font-family:'Cormorant Garamond',serif; font-size:2.5rem; color:var(--ep-primary); line-height:1.1; margin-bottom:1rem; }
+.badge-perfume { background:var(--ep-cream); color:var(--ep-text); font-size:.75rem; padding:.3rem .8rem; border-radius:99px; font-weight:500; border:1px solid var(--ep-border); }
+.precio-grande { font-size:2.2rem; font-weight:700; color:var(--ep-primary); }
+.precio-tachado { font-size:1.1rem; color:var(--ep-muted); text-decoration:line-through; }
+.precio-moneda { font-size:.85rem; color:var(--ep-muted); }
+.fragancia-detail-desc { color:var(--ep-muted); line-height:1.8; }
+.alert-perfume { background:var(--ep-ivory); border:1px solid var(--ep-border); border-radius:10px; color:var(--ep-muted); }
+.alert-perfume a { color:var(--ep-primary); font-weight:600; }
+
+
+.piramide-olfativa { background:var(--ep-ivory); border-radius:16px; padding:1.5rem; margin-top:1.5rem; }
+.piramide-title { font-family:'Cormorant Garamond',serif; color:var(--ep-primary); font-size:1.3rem; margin-bottom:1rem; }
+.nota-card { text-align:center; padding:1.25rem 1rem; border-radius:14px; border-top:3px solid; }
+.nota-salida  { background:linear-gradient(145deg,#FAF6F0,#F5EDE3); border-color:var(--ep-gold); }
+.nota-corazon { background:linear-gradient(145deg,#FAF6F0,#F0E8F0); border-color:var(--ep-rose); }
+.nota-fondo   { background:linear-gradient(145deg,#FAF6F0,#EFE8DC); border-color:var(--ep-muted); }
+.nota-icon { font-size:1.75rem; margin-bottom:.4rem; }
+.nota-label { font-size:.68rem; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:.4rem; }
+.nota-salida  .nota-label { color:var(--ep-gold-a11y); }
+.nota-corazon .nota-label { color:var(--ep-rose-a11y); }
+.nota-fondo   .nota-label { color:var(--ep-muted); }
+.nota-ingredientes { font-size:.85rem; color:var(--ep-text); font-weight:500; line-height:1.6; }
+.nota-tiempo { font-size:.7rem; color:var(--ep-muted); margin-top:.4rem; font-style:italic; }
+
+
+.qty-control { display:flex; align-items:center; gap:.25rem; }
+.qty-btn { width:36px; height:36px; border:1.5px solid var(--ep-border); border-radius:8px; background:#fff; cursor:pointer; font-size:1.1rem; display:flex; align-items:center; justify-content:center; }
+.qty-btn:hover { border-color:var(--ep-gold); }
+.qty-input { width:52px; height:36px; text-align:center; border:1.5px solid var(--ep-border); border-radius:8px; font-size:.95rem; }
+
+
+.resena-card { background:var(--ep-ivory); border-radius:12px; padding:1.25rem; border:1px solid var(--ep-border); }
+.resena-estrellas { font-size:.85rem; }
+
+
+.filtros-panel { background:var(--ep-ivory); border:1px solid var(--ep-border); border-radius:16px; padding:1.5rem; }
+.filtros-title { font-family:'Cormorant Garamond',serif; color:var(--ep-primary); font-size:1.2rem; margin-bottom:1rem; border-bottom:1px solid var(--ep-border); padding-bottom:.75rem; }
+.filtro-grupo { margin-bottom:1.25rem; }
+.filtro-label { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--ep-muted); margin-bottom:.5rem; display:block; }
+
+
+.carrito-item { background:var(--ep-ivory); border-radius:14px; padding:1rem; margin-bottom:1rem; border:1px solid var(--ep-border); }
+.carrito-item-img { width:80px; height:80px; border-radius:10px; background:var(--ep-cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; }
+.carrito-item-img img { width:100%; height:100%; object-fit:cover; }
+.resumen-panel { background:var(--ep-ivory); border:1px solid var(--ep-border); }
+
+
+.dashboard-card { background:#fff; border:1px solid var(--ep-border); border-radius:16px; overflow:hidden; }
+.dashboard-card-header { display:flex; justify-content:space-between; align-items:center; padding:.875rem 1.25rem; border-bottom:1px solid var(--ep-border); background:var(--ep-ivory); }
+.dashboard-card-header h5 { margin:0; font-family:'Cormorant Garamond',serif; color:var(--ep-primary); font-size:1.1rem; }
+.dashboard-card-body { padding:1.25rem; }
+.quick-link { display:flex; align-items:center; gap:.75rem; padding:.75rem 1.25rem; color:var(--ep-text); text-decoration:none; border-bottom:1px solid var(--ep-border); font-size:.875rem; transition:.15s; }
+.quick-link:last-child { border-bottom:none; }
+.quick-link:hover { background:var(--ep-ivory); color:var(--ep-primary); }
+.quick-link i { width:20px; color:var(--ep-gold-a11y); }
+.quick-link .badge { margin-left:auto; }
+
+
+.beneficio-item { padding:.75rem .5rem; }
+
+
+.footer { background:linear-gradient(135deg,#1a0a08,#2C1810,#3D1F15); color:#E8DDD5; padding:3rem 0 1.5rem; }
+.footer-brand { margin-bottom:.75rem; }
+.footer-logo { font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--ep-gold); letter-spacing:3px; }
+.footer-logo-sub { font-family:'Poppins',sans-serif; font-size:.6rem; color:#C4A882; letter-spacing:6px; text-transform:uppercase; }
+.footer h5 { font-size:.85rem; text-transform:uppercase; letter-spacing:2px; color:var(--ep-gold); margin-bottom:1rem; }
+.footer a { color:#C4A882; text-decoration:none; font-size:.85rem; line-height:2; transition:.2s; display:block; }
+.footer a:hover { color:var(--ep-gold); }
+.footer p { font-size:.85rem; color:#C4A882; margin-bottom:.4rem; }
+.copyright { background:#1a0a08; color:#8B6F5E; font-size:.78rem; }
+
+.footer .text-muted,
+.hero .text-muted,
+.header-top .text-muted {
+    color:#E8DDD5 !important;
+}
+
+
+.back-to-top {
+    position:fixed; bottom:2rem; right:2rem; z-index:999;
+    width:42px; height:42px; border-radius:50%; border:none;
+    background:var(--ep-primary); color:var(--ep-gold);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.3); cursor:pointer;
+    transition:.2s; opacity:.85;
+}
+.back-to-top:hover { opacity:1; transform:translateY(-2px); }
+
+
+.pagination .page-link { color:var(--ep-primary); border-color:var(--ep-border); }
+.pagination .page-item.active .page-link {
+    background:var(--ep-gold);
+    border-color:var(--ep-gold);
+    color:var(--ep-primary);
+    font-weight:700;
+}
+
+
+.auth-page { min-height:80vh; display:flex; align-items:center; justify-content:center; padding:2rem 1rem; }
+.auth-card { background:#fff; border:1px solid var(--ep-border); border-radius:20px; padding:2.5rem; width:100%; max-width:440px; box-shadow:0 8px 40px rgba(44,24,16,.1); }
+.auth-brand { text-align:center; margin-bottom:1.5rem; }
+.auth-logo { font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--ep-primary); letter-spacing:4px; }
+.auth-logo-sub { font-family:'Poppins',sans-serif; font-size:.6rem; color:var(--ep-muted); letter-spacing:7px; text-transform:uppercase; }
+.auth-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--ep-primary); text-align:center; margin-bottom:.25rem; }
+.auth-sub { text-align:center; color:var(--ep-muted); font-size:.85rem; margin-bottom:1.5rem; }
+.auth-footer { text-align:center; margin-top:1.25rem; font-size:.85rem; color:var(--ep-muted); }
+.auth-footer a { color:var(--ep-primary); font-weight:600; text-decoration:none; }
+.auth-footer a:hover { color:var(--ep-gold-a11y); }
+
+
+.notif-badge {
+    position: absolute; top: -4px; right: -4px;
+    background: var(--ep-rose-a11y); color: #fff; border-radius: 999px;
+    font-size: .65rem; font-weight: 700; line-height: 1;
+    padding: .25rem .4rem; min-width: 1.1rem; text-align: center;
+}
+.notif-dropdown { width: 340px; max-width: 90vw; border: none; box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+.notif-dropdown-header { display:flex; justify-content:space-between; align-items:center; padding:.75rem 1rem; border-bottom:1px solid #eee; }
+.notif-dropdown-body { max-height: 340px; overflow-y: auto; }
+.notif-item { display:flex; gap:.6rem; padding:.65rem 1rem; text-decoration:none; color:inherit; border-bottom:1px solid #f4f4f4; }
+.notif-item:hover { background:#faf8f5; }
+.notif-item.no-leida { background:#fff8ec; }
+.notif-item i { margin-top:.2rem; }
+.notif-titulo { font-weight:600; font-size:.85rem; }
+.notif-mensaje { font-size:.8rem; color:#555; }
+.notif-fecha { font-size:.72rem; color:#999; }
+.notif-vacio { padding:1.5rem 1rem; text-align:center; color:#999; font-size:.85rem; }
+.notif-dropdown-footer { padding:.6rem 1rem; text-align:center; border-top:1px solid #eee; }
+.notif-dropdown-footer a { font-size:.85rem; }
+
+
+/* Selector de tamaño (100/50/30 ml) en la ficha de producto */
+.btn-tamano {
+    background: #fff;
+    border: 1.5px solid var(--ep-border);
+    color: var(--ep-text);
+    border-radius: 8px;
+    padding: .5rem 1.1rem;
+    font-weight: 600;
+    font-size: .9rem;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: all .15s;
+}
+.btn-tamano:hover { border-color: var(--ep-gold); }
+.btn-tamano.active {
+    border-color: var(--ep-gold);
+    background: linear-gradient(135deg, var(--ep-gold), #C49A28);
+    color: var(--ep-primary);
+}
+.btn-tamano.agotado {
+    opacity: .5;
+    color: var(--ep-muted);
+}
+
+/* Mejoras de accesibilidad e interfaz */
+img { max-width: 100%; }
+a:focus-visible, button:focus-visible, .btn:focus-visible, .nav-link:focus-visible {
+    outline: 2px solid var(--ep-gold-a11y); outline-offset: 2px;
+}
+.fragancia-card-img, .envase-img, .fragancia-detail-img, .thumb-img {
+    background: var(--ep-cream); /* evita "flash" en blanco mientras carga la imagen */
+}
+
+/* Responsive: barra superior no se rompe en móviles pequeños */
+@media (max-width: 575.98px) {
+    .header-top { padding: .4rem .75rem; flex-wrap: wrap; gap:.35rem; }
+    .header-top .social-icons { order: 2; }
+    .header-top .d-flex.gap-2 { order: 1; margin-left:auto; }
+    .hero-title { font-size: clamp(2.1rem, 9vw, 3rem); }
+    .fragancia-card-img, .fragancia-card-img-placeholder { height: 170px; }
+}
+
+/* Estados vacíos (carrito vacío, catálogo sin resultados) */
+.empty-state-illustration { display:inline-flex; }
+.empty-state-illustration svg { animation: empty-state-fade .5s ease; }
+@keyframes empty-state-fade {
+    from { opacity:0; transform: translateY(6px); }
+    to   { opacity:1; transform: translateY(0); }
+}
+
+/* Botón mostrar/ocultar contraseña */
+.password-toggle-wrap { position:relative; }
+.password-toggle-wrap input[type="password"],
+.password-toggle-wrap input[type="text"] { padding-right:2.75rem; }
+.password-toggle-btn {
+    position:absolute; right:.5rem; top:50%; transform:translateY(-50%);
+    border:none; background:transparent; color:var(--ep-muted);
+    padding:.25rem .4rem; font-size:.9rem; cursor:pointer; line-height:1;
+}
+.password-toggle-btn:hover { color:var(--ep-primary); }
+
+/*
+ * Tabla apilada en mobile, reutilizable en cualquier listado del front
+ * (mismo patrón usado en el panel admin, ver public/assets/admin/css/style.css).
+ * Uso: class="table-mobile-stack" en la <table> + data-label="Columna" en cada <td>.
+ */
+@media (max-width: 767px) {
+    .table-mobile-stack thead {
+        display: none;
+    }
+
+    .table-mobile-stack,
+    .table-mobile-stack tbody,
+    .table-mobile-stack tr,
+    .table-mobile-stack td {
+        display: block;
+        width: 100%;
+    }
+
+    .table-mobile-stack tbody tr {
+        padding: .75rem 0;
+        border-bottom: 1px solid #f1ecea;
+    }
+
+    .table-mobile-stack tbody td {
+        padding: .4rem 1rem;
+        border: none;
+    }
+
+    .table-mobile-stack tbody td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: .68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: #a08f85;
+        margin-bottom: .2rem;
+    }
+}

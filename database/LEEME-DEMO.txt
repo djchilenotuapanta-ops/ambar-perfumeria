@@ -1,0 +1,36 @@
+Base de datos de demo ya poblada (para la defensa / pruebas de reportes)
+==========================================================================
+
+El archivo `database-demo-poblada.sqlite` en esta misma carpeta ya tiene
+cargado:
+  - Las 633 fragancias del catálogo, cada una con costo_por_ml y
+    precio_por_ml ficticios (~55% de margen sobre el precio real).
+  - Costos de envase ficticios para las 9 combinaciones tamaño+género
+    (30/50/100 ml x hombre/mujer/unisex).
+  - 18 clientes de prueba (algunos registrados hace pocos días, para el
+    indicador de "clientes nuevos").
+  - 220 pedidos distribuidos en los últimos 90 días (~78% pagados/
+    entregados, ~12% pendientes, ~10% cancelados), con varias líneas cada
+    uno, usando precios y stock reales del catálogo.
+
+CÓMO USARLA (más rápido para probar los reportes ya mismo):
+  1. En tu .env cambia:
+       DB_CONNECTION=sqlite
+       DB_DATABASE=database/database-demo-poblada.sqlite
+     (comenta o borra las líneas DB_HOST/DB_PORT/DB_DATABASE/DB_USERNAME/
+     DB_PASSWORD de MySQL, o simplemente déjalas, sqlite las ignora)
+  2. php artisan serve
+  3. Entra como admin: admin@ambarparfums.com / Password@2024!
+  4. Admin > Reportes > Ventas / Productos / Clientes
+
+CÓMO REGENERARLA DESDE CERO (por ejemplo ya en tu MySQL real):
+  php artisan migrate:fresh --seed
+
+  Esto corre automáticamente:
+    - DatabaseSeeder (usuarios admin/cliente, familias, catálogo real)
+    - GenerarTamanosPresentacionesSeeder (tamaños 30/50/100 ml)
+    - DatosDemoSeeder (costos/envases ficticios + pedidos ya "vendidos")
+
+  DatosDemoSeeder NO pisa costos reales que ya hayas cargado a mano, y NO
+  genera pedidos si ya existen pedidos en la base (para no duplicar datos
+  si vuelves a correr `db:seed` sin el --fresh).
