@@ -2,14 +2,14 @@
 
 Sistema web desarrollado en Laravel para la gestión de una perfumería, incluyendo catálogo de productos, inventario, procesamiento de pedidos y registro de pagos.
 
-## 🛠️ Tecnologías utilizadas
+##Tecnologías utilizadas
 
 - **Backend:** PHP / Laravel
 - **Base de datos:** MySQL
 - **Frontend:** Blade, HTML, CSS, JavaScript
 - **Gestor de dependencias:** Composer / NPM
 
-## 📋 Requisitos previos
+## Requisitos previos
 
 Antes de instalar el proyecto, asegúrate de tener instalado en tu computadora:
 
@@ -19,7 +19,7 @@ Antes de instalar el proyecto, asegúrate de tener instalado en tu computadora:
 - Node.js y NPM (para compilar los assets del frontend)
 - Git
 
-## 🚀 Instalación paso a paso
+## Instalación paso a paso
 
 ### 1. Clonar el repositorio
 
